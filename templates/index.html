@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+	{% block head %}
+	<title>Home</title>
+	{% endblock %}
+
+
+	{% block body %}
+
+	<section class="jumbotron text-center">
+    <div class="container">
+      <h1>Encriptación y desenctriptación</h1>
+      <p class="lead text-muted">Encriptación y desencriptación de mensajes utilizando el método de sustitución polialfabética (en este caso, dos alfabetos).</p>
+    </div>
+  </section>
+
+	<h2>Encriptación</h2>
+	<p>El mensaje debe contener solamente caracteres alfabéticos</p>
+	<br>
+
+	<form action="/encryption" method="POST">
+        <div class="form-group">
+        	<label>Mensaje</label>
+        	<textarea class="form-control" type='text' name='message' id='message' placeholder="Escriba un mensaje para encriptar" rows="4"></textarea>
+        	<br>
+        	<input class="btn btn-primary" type='submit' value='Encriptar'>
+        </div>
+        <br><br>
+
+        <div class="form-group">
+        	<label>Mensaje encriptado</label>
+        	<textarea class="form-control" type='text' name='message_enc' id='message_enc' rows="4" readonly placeholder="Mensaje encriptado">{{m_enc}}</textarea>
+        </div>
+        <br>
+        
+        	<label>Claves de encriptación</label>
+        	<div class="col">
+        		<input type='text' name='key11' id='key11' value="{{key11}}" readonly>
+        	</div>
+        	<br>
+        	<div class="col-7">
+        		<input type='text' name='key12' id='key12' value="{{key12}}" readonly>
+        </div>
+        <br>
+    </form>
+    <br>
+    <hr>
+
+    <h2>Desencriptación</h2>
+	<br>
+
+    <form action="/decryption", method="POST">
+    	<div class="form-group">
+        	<label>Mensaje encriptado</label>
+        	<textarea class="form-control" type='text' name='message_enc' id='message_enc' rows='4' placeholder="Escriba un mensaje para decencriptar"></textarea>
+        	<br>
+        </div>
+        
+        <label>Claves de encriptación</label>
+        <div class="col">
+        	<input type='text' name='key21' id='key21'>
+        </div>
+        <br>
+        <div class="col">
+        	<input type='text' name='key22' id='key22'>
+        </div>
+        <br>
+        <input class="btn btn-primary" type='submit' value='Desencriptar'>
+        <br><br>
+        <div class="form-group">
+        <label>Mensaje original</label>
+        <textarea class="form-control" type='text' name='message' id='message' rows="4" readonly placeholder="Mensaje original">{{m_dec}}</textarea>
+        </div>
+        <br>
+    </form>
+
+	{% endblock %}
